@@ -1,14 +1,23 @@
 from django.db import models
 
 # Create your models here.
+NIVEL_CHOICES = [("GEN","General"),
+                 ("PRE","Ciclo Preescolar",),
+                 ("BAS","Ciclo Básico"),
+                 ("MED","Ciclo Medio")]
+
 class Categoria(models.Model):
     nombre = models.TextField()
     descripción = models.TextField()
 
 class Comunicado(models.Model):
+    NIVEL_CHOICES = [("GEN","General"),
+                 ("PRE","Ciclo Preescolar",),
+                 ("BAS","Ciclo Básico"),
+                 ("MED","Ciclo Medio")]
     titulo = models.TextField()
     detalle = models.TextField()
-    nivel = models.TextField()
+    nivel = models.CharField(max_length=50, choices=NIVEL_CHOICES,default=NIVEL_CHOICES[0])
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     fecha_envio = models.DateTimeField()
     fecha_ultima_modificación = models.DateTimeField()

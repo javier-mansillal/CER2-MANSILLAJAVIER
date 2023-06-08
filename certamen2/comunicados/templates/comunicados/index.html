@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Comunicados</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'comunicados/index.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark" data-bs-theme="dark" >
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href='/admin/'> Admin</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>Comunicados</h1>
+    {% for comunicado in comunicados%}
+    <div id=comunicado>
+        <hr>
+        <h1>{{ comunicado.titulo }} </h1>
+        <p>{{ comunicado.detalle }} </p>
+        <hr>
+       <p>Nivel: {{ comunicado.nivel }}</p>
+       <p>Categoría: {{ comunicado.categoria.nombre }}</p>
+       <p>Fecha de envío: {{ comunicado.fecha_envio }}</p>
+       <p>Fecha de la última modificación: {{ comunicado.fecha_ultima_modificación }}</p>
+       <p>Publicado por: {{ comunicado.publicado_por }}</p>
+       <hr>
+    </div>
+    {% endfor %}
+</body>
+</html> 
