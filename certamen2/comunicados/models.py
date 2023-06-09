@@ -1,14 +1,12 @@
 from django.db import models
 
 # Create your models here.
-NIVEL_CHOICES = [("GEN","General"),
-                 ("PRE","Ciclo Preescolar",),
-                 ("BAS","Ciclo Básico"),
-                 ("MED","Ciclo Medio")]
-
 class Categoria(models.Model):
     nombre = models.TextField()
     descripción = models.TextField()
+    
+    def __str__(self):
+        return self.nombre
 
 class Comunicado(models.Model):
     NIVEL_CHOICES = [("GEN","General"),
@@ -22,3 +20,6 @@ class Comunicado(models.Model):
     fecha_envio = models.DateTimeField()
     fecha_ultima_modificación = models.DateTimeField()
     publicado_por = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.titulo

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_bootstrap_icons',
     'comunicados.apps.ComunicadosConfig',
     'bootstrap5',
     'django.contrib.admin',
